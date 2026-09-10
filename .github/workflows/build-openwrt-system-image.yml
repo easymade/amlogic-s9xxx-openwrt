@@ -305,7 +305,7 @@ on:
       openwrt_ip:
         description: "Set OpenWrt default IP address."
         required: false
-        default: "192.168.1.1"
+        default: "192.168.100.3"
       use_ccache:
         description: "Auto use ccache."
         required: false
@@ -440,7 +440,8 @@ jobs:
           REPO_BRANCH="${source_branch_input##*_}"
 
           # Clone the source code repository
-          git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+          #git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+          git clone -q --single-branch --depth=1 --branch=v25.12.5 ${REPO_URL} openwrt
           ln -sf /builder/openwrt ${{ github.workspace }}/openwrt
           ln -sf /builder/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
 
